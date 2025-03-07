@@ -1,0 +1,19 @@
+name: Rust-Powered GitHub Pages Deployment
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Install Rust
+              uses: dtolnay/rust-toolchain@stable
+
+            - name: Run Rust Deployment Script
+              run: cargo run --release --bin deploy
